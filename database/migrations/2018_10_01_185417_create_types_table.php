@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyProductsTable extends Migration
+class CreateTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class AddForeignKeyProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreign('category_id')->references('id')->on('categories');
+        Schema::create('types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->unsignedInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands');
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +29,6 @@ class AddForeignKeyProductsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('types');
     }
 }
