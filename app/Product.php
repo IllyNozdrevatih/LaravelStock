@@ -25,4 +25,18 @@ class Product extends Model
     public function value_characteristics(){
         return $this->hasMany('App\ValueCharacteristic');
     }
+
+    public function getCharacteristic(){
+        $characteristics = array();
+        $collection =  $this->value_characteristics;
+        foreach ( $collection as $model ){
+            array_push($characteristics,$model->value);
+        }
+        return implode(" ",$characteristics);
+    }
+
+    public function getName(){
+        $name = $this->type->name.' '.$this->brand->name;
+        return $name;
+    }
 }

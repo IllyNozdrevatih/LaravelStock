@@ -3,20 +3,14 @@
     <table class="table">
         <tr>
             <td>id</td>
-            <td>brand</td>
-            <td>model</td>
+            <td>name</td>
             <td>characteristics</td>
         </tr>
     @foreach( $products as $product)
         <tr>
             <td>{{ $product->id }}</td>
-            <td>{{ $product->brand->name }}</td>
-            <td>{{ $product->type->name }}</td>
-            <td>
-                @foreach( $product->value_characteristics as $characteristics)
-                    {{ $characteristics->value }}
-                @endforeach
-            </td>
+            <td><a href="{{ route('products.show',$product) }}">{{ $product->getName() }}</td></a>
+            <td>{{ $product->getCharacteristic() }}</td>
         </tr>
     @endforeach
     </table>

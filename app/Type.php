@@ -10,6 +10,10 @@ class Type extends Model
         'name','brand_id'
     ];
 
+    public function product(){
+        return $this->hasMany('App\Product');
+    }
+
     public function brand(){
         return $this->belongsTo('App\Brand');
     }
