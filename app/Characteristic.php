@@ -11,6 +11,6 @@ class Characteristic extends Model
     ];
 
     public function values(){
-        return $this->hasMany('App/ValueCharacteristic');
+        return $this->hasMany('App\ValueCharacteristic');
     }
 }

@@ -19,6 +19,7 @@ class CreateValueCharacteristicsTable extends Migration
             $table->foreign('characteristic_id')->references('id')->on('characteristics');
             $table->unsignedInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->string('value');
             $table->timestamps();
         });
     }

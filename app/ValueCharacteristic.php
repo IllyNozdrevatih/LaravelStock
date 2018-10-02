@@ -6,15 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class ValueCharacteristic extends Model
 {
+    protected $table = 'value_characteristics';
+
     protected $fillable = [
         'characteristic_id','product_id','value'
     ];
 
     public function characteristic(){
-        return $this->belongsTo('App/Characteristic');
+        return $this->belongsTo('App\Characteristic');
     }
 
     public function product(){
-        return $this->belongsTo('App/Product');
+        return $this->belongsTo('App\Product');
     }
 }
