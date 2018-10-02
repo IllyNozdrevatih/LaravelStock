@@ -12,14 +12,18 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $names = ['Шины','Диски'];
+
+        $insertNames = [];
         foreach ( $names as $name){
-            DB::table('categories')->insert([
-                'name' => $name ,
+            array_push($insertNames , [
+                'name' =>$name,
                 'uuid' => str_random(10),
                 'slug' => str_random(10),
                 'active' => 'something',
                 'page_products_count' => random_int(5,10)
             ]);
-        }
+        };
+
+        DB::table('categories')->insert($insertNames);
     }
 }

@@ -11,8 +11,11 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+        $insertTires = [];
+        $insertDisks = [];
+
         for($i = 0 ; $i < 100; $i++){
-            DB::table('products')->insert([
+            array_push($insertTires ,[
                 'brand_id' => random_int(1,9),
                 'type_id' => random_int(1,5),
                 'uuid' => str_random(10),
@@ -22,8 +25,9 @@ class ProductsTableSeeder extends Seeder
                 'active' => 'something'
             ]);
         }
+
         for($i = 0 ; $i < 100; $i++) {
-            DB::table('products')->insert([
+            array_push($insertDisks ,[
                 'brand_id' => random_int(13,20),
                 'type_id' => random_int(10,13),
                 'uuid' => str_random(10),
@@ -33,5 +37,8 @@ class ProductsTableSeeder extends Seeder
                 'active' => 'something'
             ]);
         }
+
+        DB::table('products')->insert($insertTires);
+        DB::table('products')->insert($insertDisks);
     }
 }

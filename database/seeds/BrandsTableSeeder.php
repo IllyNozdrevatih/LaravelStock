@@ -20,20 +20,21 @@ class BrandsTableSeeder extends Seeder
             'Adora','Alutec','Disla','Replica','Fondmetal',
             'JT','KFZ','Original','Replay'
         ];
+        $insertBrandsTires = [];
 
         foreach ( $brands_tires as $brand ) {
-            DB::table('brands')->insert([
-                'name' =>$brand,
-                'category_id'=>1
-            ]);
-        }
+            array_push($insertBrandsTires, ['name' => $brand , 'category_id' => 1]);
+        };
 
-
+        $insertBrandsDisks = [];
         foreach ( $brands_disks as $brand ) {
-            DB::table('brands')->insert([
-                'name' =>$brand,
-                'category_id'=>2
-            ]);
-        }
+            array_push($insertBrandsDisks , ['name'=> $brand , 'category_id' => 2]);
+        };
+
+
+        DB::table('brands')->insert($insertBrandsTires);
+
+        DB::table('brands')->insert($insertBrandsDisks);
+
     }
 }

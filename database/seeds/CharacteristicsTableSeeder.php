@@ -13,12 +13,17 @@ class CharacteristicsTableSeeder extends Seeder
     {
         $characteristics = [ 'Диаметр','Ширина','Профиль','Сезон','Шипы','Ширина Диска','PCD','DIA','Цвет'];
 
-        foreach ( $characteristics as $characteristic )
-            DB::table('characteristics')->insert([
+        $insertCharacteristics = [];
+        foreach ( $characteristics as $characteristic ) {
+            array_push($insertCharacteristics ,[
                 'name' => $characteristic,
                 'slug' => str_random(10),
                 'multiple' => '0',
             ]);
+        };
+
+        DB::table('characteristics')->insert($insertCharacteristics);
+
     }
 
 }

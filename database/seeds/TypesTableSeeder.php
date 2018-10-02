@@ -21,18 +21,24 @@ class TypesTableSeeder extends Seeder
             'H-531','BKFP','KAP','Kapitan B'
         ];
 
+        $insertTires = [];
+        $insertDisks = [];
+
         foreach ($types_tires as $type){
-            DB::table('types')->insert([
+            array_push($insertTires ,[
                 'name' => $type,
                 'brand_id' => random_int(1,12)
             ]);
         }
 
         foreach ($types_disks as $type){
-            DB::table('types')->insert([
+            array_push($insertDisks ,[
                 'name' => $type,
                 'brand_id' => random_int(13,20)
             ]);
         }
+
+        DB::table('types')->insert($insertTires);
+        DB::table('types')->insert($insertDisks);
     }
 }
