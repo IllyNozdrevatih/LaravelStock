@@ -16,10 +16,10 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('uuid')->unique();
-            $table->string('slug')->unique();
-            $table->string('active');
-            $table->integer('page_products_count');
+            $table->string('uuid')->unique()->nullable();
+            $table->string('slug')->unique()->nullable();
+            $table->string('active')->nullable();
+            $table->integer('page_products_count')->nullable();
             $table->timestamps();
         });
     }

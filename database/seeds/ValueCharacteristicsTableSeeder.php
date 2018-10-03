@@ -34,82 +34,77 @@ class ValueCharacteristicsTableSeeder extends Seeder
         $values_ch_8 = ['4x98','4x100','5x100','5x104','5x114'];
         $values_ch_9 = ['Черный','GM','MS','gold','chrome','FCGl'];
 
+        $insertValues = [];
         //заполнение шин
         for($i = 1 ; $i <= 100;$i++) {
-            $insertTires = [];
-
-            array_push($insertTires ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 1,
                 'product_id' => $i,
                 'value' => $values_ch_1[random_int(0,4)]
             ]);
 
-            array_push($insertTires ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 2,
                 'product_id' => $i,
                 'value' => $values_ch_2[random_int(0,8)]
             ]);
 
 
-            array_push($insertTires ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 3,
                 'product_id' => $i,
                 'value' => $values_ch_3[random_int(1,5)]
             ]);
 
-            array_push($insertTires ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 4,
                 'product_id' => $i,
                 'value' => $values_ch_4[random_int(0,2)]
             ]);
 
-            array_push($insertTires ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 5,
                 'product_id' => $i,
                 'value' => $values_ch_5[2]
             ]);
 
-
-            DB::table('value_characteristics')->insert($insertTires);
         }
 
         //заполнение дисков
         for($i = 101;$i <= 200;$i++){
             $insertDisks = [];
-            array_push($insertDisks ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 1,
                 'product_id' => $i,
                 'value' => $values_ch_1[random_int(0,4)]
             ]);
 
-            array_push($insertDisks ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 6,
                 'product_id' => $i,
                 'value' => $values_ch_7[random_int(0,7)]
             ]);
 
 
-            array_push($insertDisks ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 7,
                 'product_id' => $i,
                 'value' => $values_ch_8[random_int(0,4)]
             ]);
 
-            array_push($insertDisks ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 8,
                 'product_id' => $i,
                 'value' => random_int(40,90)
             ]);
 
-            array_push($insertDisks ,[
+            array_push($insertValues ,[
                 'characteristic_id' => 9,
                 'product_id' => $i,
                 'value' => $values_ch_9[random_int(0,5)]
             ]);
-
-
-            DB::table('value_characteristics')->insert($insertDisks);
         };
 
+        DB::table('value_characteristics')->insert($insertValues);
     }
 }

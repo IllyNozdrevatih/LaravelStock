@@ -10,10 +10,6 @@ class Category extends Model
         'active','uuid','slug','active','page_products_count'
     ];
 
-    public function brands(){
-        return $this->hasMany('App\Brands');
-    }
-
     public function products(){
         return $this->hasMany('App\Product');
     }

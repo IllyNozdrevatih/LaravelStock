@@ -13,10 +13,6 @@ class Brand extends Model
     public function product(){
         return $this->hasMany('App\Product');
     }
-    
-    public function category(){
-        return $this->belongsTo('App\Category');
-    }
 
     public function types(){
         return $this->hasMany('App\Type');

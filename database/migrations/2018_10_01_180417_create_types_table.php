@@ -16,7 +16,7 @@ class CreateTypesTable extends Migration
         Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->unsignedInteger('brand_id');
+            $table->unsignedInteger('brand_id')->nullable();
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->timestamps();
         });

@@ -11,30 +11,20 @@ class BrandsTableSeeder extends Seeder
      */
     public function run()
     {
-        $brands_tires = [
+        $brands = [
             'Accelera','Barum','Continental','Debica','Evergreen',
-            'Firestone','Goodyear','Kumho','Mabor','Manerva','Adora','Alu'
-        ];
-
-        $brands_disks = [
+            'Firestone','Goodyear','Kumho','Mabor','Manerva','Adora','Alu',
             'Adora','Alutec','Disla','Replica','Fondmetal',
             'JT','KFZ','Original','Replay'
         ];
-        $insertBrandsTires = [];
 
-        foreach ( $brands_tires as $brand ) {
-            array_push($insertBrandsTires, ['name' => $brand , 'category_id' => 1]);
-        };
+        $insertBrands = [];
 
-        $insertBrandsDisks = [];
-        foreach ( $brands_disks as $brand ) {
-            array_push($insertBrandsDisks , ['name'=> $brand , 'category_id' => 2]);
+        foreach ( $brands as $brand ) {
+            array_push($insertBrands, ['name' => $brand]);
         };
 
 
-        DB::table('brands')->insert($insertBrandsTires);
-
-        DB::table('brands')->insert($insertBrandsDisks);
-
+        DB::table('brands')->insert($insertBrands);
     }
 }
